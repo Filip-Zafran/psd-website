@@ -9,9 +9,11 @@ class CustomHeader extends HTMLElement {
           position: sticky;
           top: 0;
           z-index: 50;
-          background: var(--poly-white, #fff);
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          background: linear-gradient(90deg, #00AEEF, #E50051, #2B004D);
+          color: white;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
+
         .container {
           max-width: 1100px;
           margin: 0 auto;
@@ -21,28 +23,32 @@ class CustomHeader extends HTMLElement {
           align-items: center;
           flex-wrap: wrap;
         }
-        .logo {
-          height: 40px;
+
+        .logo img {
+          height: 48px;
           display: block;
         }
+
         .nav-links {
           display: flex;
           gap: 1.5rem;
           flex-wrap: wrap;
         }
+
         .nav-link {
           position: relative;
-          color: var(--text, #222);
+          color: #FFF;
           text-decoration: none;
           font-weight: 600;
-          transition: color 0.2s;
           padding-bottom: 4px;
-        }
-        .nav-link:hover {
-          color: var(--poly-magenta, #E50051);
+          transition: color 0.2s ease;
         }
 
-        /* Red underline for active link */
+        .nav-link:hover {
+          color: #FFCC00; /* Poly yellow accent */
+        }
+
+        /* Red-magenta underline for active link */
         .nav-link.active::after {
           content: "";
           position: absolute;
@@ -50,7 +56,7 @@ class CustomHeader extends HTMLElement {
           bottom: 0;
           width: 100%;
           height: 3px;
-          background-color: #E50051; /* Red underline */
+          background-color: #E50051;
           border-radius: 2px;
         }
 
@@ -60,16 +66,21 @@ class CustomHeader extends HTMLElement {
             flex-direction: column;
             align-items: flex-start;
           }
+
           .nav-links {
             gap: 1rem;
             width: 100%;
+          }
+
+          .nav-link {
+            font-size: 0.95rem;
           }
         }
       </style>
 
       <div class="container">
         <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="PSD Logo" height="60">
+          <img src="images/logo.png" alt="PSD Logo">
         </a>
         <nav class="nav-links">
           <a href="index.html" class="nav-link">Home</a>
@@ -82,10 +93,9 @@ class CustomHeader extends HTMLElement {
       </div>
     `;
 
-    // highlight current page
+    // Highlight the current page link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const links = this.shadowRoot.querySelectorAll('.nav-link');
-
     links.forEach(link => {
       const href = link.getAttribute('href');
       if (href === currentPath) {

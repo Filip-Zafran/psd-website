@@ -46,6 +46,11 @@ body {
   border-radius: 12px;
 }
 
+body {
+  background-color: #FFF9F2;
+  color: #2B004D;  /* Poly purple for main text */
+}
+
 
 /* Merch gallery grid */
 .merch-gallery {
