@@ -19,6 +19,7 @@
       <ul>
         <li>Email: <a href="mailto:polyspeeddating@gmail.com">polyspeeddating@gmail.com</a></li>
         <li>Instagram: "Coming soon"</li>
+        <li>Telegram group: "Coming soon"</li>
       </ul>
     </section>
 
@@ -26,31 +27,39 @@
       <h2>Join our mailing list</h2>
       <p>We are SUPER-DUPER careful with your data and we do NOT spam you with anything but our Events</p>
       
-     <form id="subscribe-form" onsubmit="handleSubscribe(event)">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
+   <form action="https://formspree.io/f/xnnoewka" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required>
+  </div>
 
-        <div class="form-group">
-          <fieldset>
-            <legend>Interests</legend>
-            <label class="checkbox">
-              <input type="checkbox" name="interests" value="IRL" checked> IRL Events
-            </label>
-            <label class="checkbox">
-              <input type="checkbox" name="interests" value="Online" checked> Online Events
-            </label>
-          </fieldset>
-        </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+  </div>
 
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
+  <fieldset class="form-group">
+    <legend>Interests</legend>
+    <label class="checkbox"><input type="checkbox" name="interests" value="IRL" checked> IRL Events</label>
+    <label class="checkbox"><input type="checkbox" name="interests" value="Online" checked> Online Events</label>
+  </fieldset>
+
+  <!-- Optional: customize email subject -->
+  <input type="hidden" name="_subject" value="PSD newsletter signup">
+
+  <!-- Optional: redirect to your own thank-you page -->
+  <!-- <input type="hidden" name="_redirect" value="https://filip-zafran.github.io/psd-website/thanks.html"> -->
+
+  <label class="checkbox" style="display:block;margin:.5rem 0 1rem;">
+    <input type="checkbox" required>
+    I agree to receive emails from PSD and understand I can unsubscribe anytime.
+  </label>
+
+  <button type="submit" class="btn btn-primary">Subscribe</button>
+</form>
+
+     
+
       <p id="subscribe-success" style="display:none">Thanks for subscribing! We'll be in touch soon.</p>
       <!-- Note: Replace with Mailchimp or Google Form later -->
     </section>
