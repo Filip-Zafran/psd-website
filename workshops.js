@@ -81,20 +81,41 @@ for consent negotiations in sexual and/or non-monogamous relationships. No prior
     slug: "new-to-enm",
     presenter: "Ficho (he/him)",
     type: "Workshop (interactive)",
-    title: "New to ENM Workshop",
+    title: "New to (C/E)NM",
     room: "Kitchen",
     time: "13:00h",
-    image: "images/workshops/new-to-enm.jpg",
+    image: "images/workshops/new-to-enm.png",
     presenterImage: "images/presenters/ficho.jpg",
     presenterBio: `A very active community builder and the initiator of Poly Speed Dating and Poly Fest Berlin.
-Passionate about creating spaces that spark connection, authenticity, and emotional honesty.
+Passionate about creating spaces that spark connection, authenticity, and emotional honesty. <br><br>
 
 Opening up four years ago with his primary partner, he quickly became poly at heart and deeply passionate about creating spaces that 
 celebrate connection, communication, and openness — from events like Poly Speed Dating, KiezBurn, and Poly Fest to Emotional Intelligence 
 workshops and other community projects. In his free time, he designs poly-themed art and merch, driven by a love for breaking social norms and 
 inspiring others to explore non-monogamy grounded in transparency, authenticity, and healthy communication — the essence of Kitchen Table Poly. He firmly believes that love, like tea; best when shared… and frequently refilled.
 `,
-    description: `[Placeholder description for this session.]`
+    description: `New to Non-Monogamy? A Community Discussion Circle
+
+Curious about ethical or consensual non-monogamy but not sure where to start?
+Join us for an open and supportive circle where we’ll explore the many facets of non-monogamous life — from understanding key concepts to sharing real experiences within our Berlin community.
+<br><br>
+We’ll dive into topics such as:<br>
+
+ - The differences between ENM (Ethical Non-Monogamy) and CNM (Consensual Non-Monogamy)
+<br>
+ - Common terminology and what these words mean in practice
+<br>
+ - Book recommendations and other resources to deepen your understanding
+<br>
+ - Events and communities in Berlin where you can connect and learn more
+<br>
+ - Behaviour and expectations within non-monogamous spaces
+<br>
+ - Dealing with metamours — navigating relationships with your partners’ partners
+<br>
+ - Can one get rid of jealousy, or is it something to embrace and understand?
+<br><br>
+Rather than a lecture, this is a knowledge-sharing circle — an open space for reflection, curiosity, and honest conversation among those exploring or already living non-monogamous lives.`
   },
   {
     slug: "erotic-brain",
@@ -189,18 +210,20 @@ Afterwards, the after-party offers space to continue conversations and explore a
     presenterImage: "images/presenters/ficho.jpg", // optional
     presenterBio: `
 A very active community builder and the initiator of Poly Speed Dating and Poly Fest Berlin.
-Passionate about creating spaces that spark connection, authenticity, and emotional honesty.
+Passionate about creating spaces that spark connection, authenticity, and emotional honesty. <br><br>
+
 
 Opening up four years ago with his primary partner, he quickly became poly at heart and deeply passionate about creating spaces that 
 celebrate connection, communication, and openness — from events like Poly Speed Dating, KiezBurn, and Poly Fest to Emotional Intelligence 
 workshops and other community projects. In his free time, he designs poly-themed art and merch, driven by a love for breaking social norms and 
-inspiring others to explore non-monogamy grounded in transparency, authenticity, and healthy communication — the essence of Kitchen Table Poly. He firmly believes that love, like tea; best when shared… and frequently refilled.
+inspiring others to explore non-monogamy grounded in transparency, authenticity, and healthy communication — the essence of Kitchen Table Poly. <br><br>He firmly believes that love, like tea; best when shared… and frequently refilled.
 
 `.trim(),
     description: `
 A spontaneous storytelling space where anyone can step up and share a short polyamorous story — funny,
-tender, awkward, or inspiring. There’s no sign-up list and no spotlight pressure — just a welcoming circle
-to listen, laugh, and connect through real experiences. Come to tell your story, or simply enjoy hearing
+tender, awkward, or inspiring. <br><br>
+ There’s no sign-up list and no spotlight pressure — just a welcoming circle
+to listen, laugh, and connect through real experiences. <br><br>Come to tell your story, or simply enjoy hearing
 how others navigate love, growth, and curiosity in their own ways.
 `.trim()
   },
@@ -236,7 +259,6 @@ function normalizeTime(t) {
   if (!t) return "99:99";
   const s = String(t).trim().toLowerCase();
   if (s === "all day" || s === "allday") return "99:99"; // push to end
-  // Expect formats like "11:00h" or "11:00"
   return s.replace("h", "");
 }
 
@@ -263,6 +285,8 @@ function renderList(items) {
   }
 }
 
+/* ========== Show details ========== */
+
 function showDetail(slug) {
   const ws = WORKSHOPS.find((w) => w.slug === slug) || WORKSHOPS[0];
   if (!ws) return;
@@ -277,14 +301,15 @@ function showDetail(slug) {
 
   if (titleEl) titleEl.textContent = ws.title;
   if (presenterEl) presenterEl.textContent = ws.presenter || "—";
-  if (presenterBioEl) presenterBioEl.textContent = (ws.presenterBio || "").trim() || "—";
   if (metaEl) metaEl.textContent = `${ws.room} — ${ws.time} — ${ws.type}`;
-  if (descEl) descEl.textContent = (ws.description || "").trim() || "—";
-
   if (imgEl) {
     imgEl.src = ws.image || "images/placeholders/workshop-placeholder.jpg";
     imgEl.alt = `${ws.title} image`;
   }
+
+  /* use innerHTML so <br>, <p>, <em> etc. render */
+  if (descEl) descEl.innerHTML = ws.description || "—";
+  if (presenterBioEl) presenterBioEl.innerHTML = ws.presenterBio || "—";
 
   if (presenterImgEl) {
     presenterImgEl.src = ws.presenterImage || "images/placeholders/presenter-placeholder.jpg";
@@ -292,13 +317,13 @@ function showDetail(slug) {
   }
 }
 
+/* ========== Hash handling ========== */
 function handleHashChange() {
   const slug = (location.hash || "").replace("#", "");
   if (slug) showDetail(slug);
 }
 
 /* ========== Init ========== */
-
 document.addEventListener("DOMContentLoaded", () => {
   renderList(WORKSHOPS);
 
