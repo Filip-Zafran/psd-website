@@ -829,3 +829,31 @@ details summary {
   border-radius: 10px;
   padding: 0.6rem 1rem;
   box-shadow: 0 3px 10px rgba(0,0,
+
+  /* ===== Responsive Poly Fest banner ===== */
+.polyfest-image-banner {
+  display: block;
+  width: 100%;              /* fills container width */
+  height: auto;             /* keeps correct proportions */
+  max-width: 1000px;        /* prevents it from stretching too large on desktop */
+  margin: 0 auto 2rem;      /* centers it and adds bottom spacing */
+  border-radius: 12px;      /* soft corners like other images */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* On smaller screens */
+@media (max-width: 768px) {
+  .polyfest-image-banner {
+    max-width: 95%;
+    margin: 0 auto 1.5rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .polyfest-image-banner {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+}
