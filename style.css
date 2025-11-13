@@ -874,3 +874,13 @@ details summary {
   color: #2B004D; /* deep poly purple, readable on light yellow */
   font-weight: 700;
 }
+
+.schedule-note {
+  font-style: italic;
+  font-weight: bold;
+  color: orange;
+  text-align: right;
+  display: block;
+  margin-top: 2%; /* reduce space — adjust as needed */
+}
+

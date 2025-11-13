@@ -37,17 +37,24 @@
         rel="noopener noreferrer"
       >Eventbrite – Buy PolyFest Tickets</a>
     </div>
-
-
+<br>
+   <div class="action-buttons">
+      <a
+        href="https://forms.gle/AFupXtW6FhhqYFf69"
+        class="btn-primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Eventbrite – apply for Volounteering / Free Entry <i>(limited spots)</i></a>
+    </div>
 
 
 <section class="pf-schedule" aria-label="Poly Fest schedule">
   <!-- Header -->
   <div class="pf-schedule__heading">
     <div class="pf-schedule__heading--time">Time</div>
-    <div class="pf-schedule__heading--room1">Ball Room (25)</div>
-    <div class="pf-schedule__heading--room2">Living Room (25)</div>
-    <div class="pf-schedule__heading--room3">Kitchen (15)</div>
+    <div class="pf-schedule__heading--room1">Room A</div>
+    <div class="pf-schedule__heading--room2">Room B</div>
+    <div class="pf-schedule__heading--room3">Room C</div>
   </div>
 
   <!-- 10:00–10:30 -->
@@ -107,7 +114,8 @@
     <div class="pf-schedule__time">12:30–13:00</div>
     <div class="pf-schedule__cell" data-room="Ball Room"><div class="pf-title">LUNCH</div></div>
     <div class="pf-schedule__cell" data-room="Living Room">
-      <span class="pf-tag pf-tag--entry">Registrations / Entry point 2</span>
+    <span id="entry-note" class="pf-tag pf-tag--entry">Registrations / Entry point 2</span>
+
     </div>
     <div class="pf-schedule__cell" data-room="Kitchen"><div class="pf-title">LUNCH</div></div>
   </div>
@@ -203,12 +211,13 @@
   </div>
 </section>
 
-
+<p class="schedule-note">*please note that the schedule is not final and may change</p>
 
     <!-- Workshops sidebar + detail -->
     <section id="workshops-browser" class="workshops-wrap">
       <aside class="workshops-sidebar" aria-label="Workshops list">
-        <h2>Workshops &amp; Presenters Info</h2>
+        <h2 >Workshops &amp; Presenters Info</h2>
+            <h2 style="color: red;"><i>Workshop details will be updated by Saturday 15th Nov </i></h2>
         <ul id="ws-list" class="ws-list" role="list">
           <!-- Filled by JS -->
         </ul>
