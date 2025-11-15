@@ -12,18 +12,7 @@
 ================================================= */
 
 const WORKSHOPS = [
-  {
-    slug: "mens-circle",
-    presenter: "Florian",
-    type: "Workshop (interactive)",
-    title: "Men’s Circle",
-    room: "Ball Room",
-    time: "21:30h",
-    image: "images/workshops/mens-circle.jpg",
-    presenterImage: "", // e.g., "images/presenters/florian.jpg"
-    presenterBio: `[Placeholder bio for Florian.]`,
-    description: `[Placeholder description for Men’s Circle.]`
-  },
+
   {
     slug: "rethinking-relationships",
     presenter: "Mariana Cerejo",
@@ -32,9 +21,19 @@ const WORKSHOPS = [
     room: "Ball Room",
     time: "15:15h",
     image: "images/workshops/rethinking-relationships.jpg",
-    presenterImage: "",
-    presenterBio: `[Placeholder bio for Mariana Cerejo.]`,
-    description: `[Placeholder description for this session.]`
+    presenterImage: "images/presenters/mariana.jpeg",
+      presenterImage2: "images/presenters/antonio.jpeg",
+    presenterBio: `The workshop will be led by Mariana Cerejo, the creator and designer of the cards, and António, co-facilitator of the activity and a strong supporter of The Relationship Design Games project.
+<br>
+<br>
+Website: www.therelationshipdesigngame.com`,
+    description: `In the Rethink Relationships workshop, we will use the cards from The Relationship Design Games as a framework for different small-group dynamics focused on sharing thoughts and experiences as a way to reimagine relationships beyond socially imposed norms.
+
+
+The Relationship Design Games are tools that invite people to consciously co-create their own relationship dynamics. 
+Inspired by the principles of relationship anarchy, they encourage those involved to set boundaries, express desires
+ openly, adjust expectations, and establish their own agreements.
+`
   },
   {
     slug: "community-mapping-lab",
@@ -297,7 +296,9 @@ function showDetail(slug) {
   const metaEl = document.getElementById("ws-meta");
   const imgEl = document.getElementById("ws-image");
   const descEl = document.getElementById("ws-desc");
-  const presenterImgEl = document.getElementById("ws-presenter-img");
+  const presenterImgEl1 = document.getElementById("ws-presenter-img-1");
+  const presenterImgEl2 = document.getElementById("ws-presenter-img-2");
+
 
   if (titleEl) titleEl.textContent = ws.title;
   if (presenterEl) presenterEl.textContent = ws.presenter || "—";
@@ -311,11 +312,25 @@ function showDetail(slug) {
   if (descEl) descEl.innerHTML = ws.description || "—";
   if (presenterBioEl) presenterBioEl.innerHTML = ws.presenterBio || "—";
 
-  if (presenterImgEl) {
-    presenterImgEl.src = ws.presenterImage || "images/placeholders/presenter-placeholder.jpg";
-    presenterImgEl.alt = `${ws.presenter} portrait`;
+  // First presenter image (always used if available)
+  if (presenterImgEl1) {
+    presenterImgEl1.src =
+      ws.presenterImage || "images/placeholders/presenter-placeholder.jpg";
+    presenterImgEl1.alt = `${ws.presenter} portrait`;
+  }
+
+  // Second presenter image (optional)
+  if (presenterImgEl2) {
+    if (ws.presenterImage2) {
+      presenterImgEl2.style.display = "block";
+      presenterImgEl2.src = ws.presenterImage2;
+      presenterImgEl2.alt = `${ws.presenter} second portrait`;
+    } else {
+      presenterImgEl2.style.display = "none";
+    }
   }
 }
+
 
 /* ========== Hash handling ========== */
 function handleHashChange() {

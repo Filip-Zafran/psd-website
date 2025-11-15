@@ -884,3 +884,14 @@ details summary {
   margin-top: 2%; /* reduce space — adjust as needed */
 }
 
+.ws-presenter-images {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ws-presenter-img {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+}
